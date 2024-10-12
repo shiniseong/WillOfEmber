@@ -1,4 +1,5 @@
 [versions]
+# === ANDROID ===
 agp = "8.5.2"
 android-compileSdk = "34"
 android-minSdk = "24"
@@ -11,17 +12,27 @@ androidx-espresso-core = "3.6.1"
 androidx-lifecycle = "2.8.0"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
+# === COMPOSE ===
 compose-plugin = "1.6.11"
-junit = "4.13.2"
+# === KOTLIN ===
 kotlin = "2.0.20"
 kotlinx-coroutines = "1.8.1"
+# === KTOR ===
 ktor = "2.3.12"
+# === LOGGING ===
 logback = "1.5.7"
+# === TEST ===
+junit = "4.13.2"
+kotest = "5.9.1"
+
 
 [libraries]
+# === TEST ===
+kotest = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+# === ANDROID ===
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
@@ -32,16 +43,22 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+# === LOGGING ===
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+# === KTOR ===
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-server-tests = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
 
 [plugins]
+# === ANDROID ===
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+# === COMPOSE ===
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# === KOTLIN ===
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+# === KTOR ===
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
