@@ -30,4 +30,9 @@ dependencyResolutionManagement {
 
 include(":composeApp")
 include(":server")
+
 include(":shared")
+include(":shared:adapter:inbound:controller")
+include(":shared:application")
+include(":shared:adapter:outbound:repository")
+
