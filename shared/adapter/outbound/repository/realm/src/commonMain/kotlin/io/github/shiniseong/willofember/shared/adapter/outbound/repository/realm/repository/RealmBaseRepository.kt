@@ -44,6 +44,11 @@ abstract class RealmBaseRepository<D : DomainEntity, P>(
         return entities
     }
 
+    override fun saveAllOrUpdate(entities: List<D>): List<D> {
+        realm.writeBlocking { entities.forEach { copyToRealm(it.toPersistenceEntity(), UpdatePolicy.ALL) } }
+        return entities
+    }
+
     override fun deleteById(id: String) {
         realm.writeBlocking {
             query(persistenceClazz, "id == $0", id)

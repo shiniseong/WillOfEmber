@@ -3,6 +3,7 @@ package io.github.shiniseong.willofember.shared.adapter.outbound.repository.real
 import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.entity.UserEntity
 import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.repository.UserRepositoryRealmImpl
 import io.github.shiniseong.willofember.shared.application.domain.entity.User
+import io.github.shiniseong.willofember.shared.application.domain.enums.Gender
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import kotlin.test.Test
@@ -18,6 +19,7 @@ class BaseRepositoryTest {
             User(
                 id = "uuid-1",
                 email = "shini12@example.com",
+                gender = Gender.MALE,
                 nickname = "shiniseong",
                 oauthProvider = "google",
                 oauthId = "google-oauth-id-1",
@@ -26,6 +28,7 @@ class BaseRepositoryTest {
             User(
                 id = "uuid-2",
                 email = "tommy12@example.com",
+                gender = Gender.MALE,
                 nickname = "tommy",
                 oauthProvider = "google",
                 oauthId = "google-oauth-id-2",
@@ -34,6 +37,7 @@ class BaseRepositoryTest {
             User(
                 id = "uuid-3",
                 email = "jason12@example.com",
+                gender = Gender.MALE,
                 nickname = "jason",
                 oauthProvider = "google",
                 oauthId = "google-oauth-id-3",
@@ -42,6 +46,7 @@ class BaseRepositoryTest {
             User(
                 id = "uuid-4",
                 email = "anna12@example.com",
+                gender = Gender.MALE,
                 nickname = "anna",
                 oauthProvider = "google",
                 oauthId = "google-oauth-id-4",
@@ -132,6 +137,24 @@ class BaseRepositoryTest {
         val savedUsers = userRepository.findAll()
         println("savedUsers: $savedUsers")
         assertEquals(4, savedUsers.size)
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun saveAllOrUpdate() {
+        println("saveAllOrUpdate")
+        val beforeUsers = userRepository.findAll()
+        println("beforeUsers: $beforeUsers")
+        assertEquals(0, beforeUsers.size)
+        userRepository.saveAllOrUpdate(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(4, savedUsers.size)
+        userRepository.saveAllOrUpdate(sampleUsers.map { it.copy(nickname = "${it.nickname}-updated") })
+        val updatedUsers = userRepository.findAll()
+        println("updatedUsers: $updatedUsers")
+        assertEquals(4, updatedUsers.size)
+        assertEquals(sampleUsers.map { it.copy(nickname = "${it.nickname}-updated") }, updatedUsers)
         userRepository.deleteAll()
     }
 

@@ -7,6 +7,7 @@ interface BaseRepository<T> {
     fun save(entity: T): T
     fun saveOrUpdate(entity: T): T
     fun saveAll(entities: List<T>): List<T>
+    fun saveAllOrUpdate(entities: List<T>): List<T>
     fun deleteById(id: String)
     fun deleteAllByIds(ids: List<String>)
     fun deleteAll()

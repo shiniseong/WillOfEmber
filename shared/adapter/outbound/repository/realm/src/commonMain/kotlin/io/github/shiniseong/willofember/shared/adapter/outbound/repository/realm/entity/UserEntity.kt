@@ -1,6 +1,8 @@
 package io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.entity
 
 import io.github.shiniseong.willofember.shared.application.domain.entity.User
+import io.github.shiniseong.willofember.shared.application.domain.enums.GenderValue
+import io.github.shiniseong.willofember.shared.application.domain.enums.toGenderEnum
 import io.github.shiniseong.willofember.shared.application.port.outbound.repository.entity.OutboundEntity
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
@@ -9,6 +11,7 @@ class UserEntity : RealmObject, OutboundEntity<User> {
     @PrimaryKey
     var id: String = ""
     var email: String = ""
+    var gender: GenderValue = "1"
     var nickname: String = ""
     var oauthProvider: String = ""
     var oauthId: String = ""
@@ -18,6 +21,7 @@ class UserEntity : RealmObject, OutboundEntity<User> {
     override fun toDomain(): User = User(
         id = id,
         email = email,
+        gender = gender.toGenderEnum(),
         nickname = nickname,
         oauthProvider = oauthProvider,
         oauthId = oauthId,
