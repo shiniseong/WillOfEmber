@@ -4,6 +4,7 @@ import io.github.shiniseong.willofember.shared.application.domain.entity.DomainE
 import io.github.shiniseong.willofember.shared.application.port.outbound.repository.BaseRepository
 import io.github.shiniseong.willofember.shared.application.port.outbound.repository.entity.OutboundEntity
 import io.realm.kotlin.Realm
+import io.realm.kotlin.UpdatePolicy
 import io.realm.kotlin.types.RealmObject
 import kotlin.reflect.KClass
 
@@ -30,6 +31,11 @@ abstract class RealmBaseRepository<D : DomainEntity, P>(
 
     override fun save(entity: D): D {
         realm.writeBlocking { copyToRealm(entity.toPersistenceEntity()) }
+        return entity
+    }
+
+    override fun saveOrUpdate(entity: D): D {
+        realm.writeBlocking { copyToRealm(entity.toPersistenceEntity(), UpdatePolicy.ALL) }
         return entity
     }
 

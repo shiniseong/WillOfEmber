@@ -53,6 +53,121 @@ class BaseRepositoryTest {
     }
 
     @Test
+    fun findById() {
+        println("findById")
+        val targetId = "uuid-2"
+        userRepository.saveAll(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(4, savedUsers.size)
+        val foundUser = userRepository.findById(targetId)
+        println("foundUser: $foundUser")
+        assertEquals(sampleUsers.find { it.id == targetId }, foundUser)
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun findAllByIds() {
+        println("findAllByIds")
+        val targetIds = listOf("uuid-1", "uuid-3")
+        userRepository.saveAll(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        val foundUsers = userRepository.findAllByIds(targetIds)
+        println("foundUsers: $foundUsers")
+        assertEquals(sampleUsers.filter { it.id in targetIds }, foundUsers)
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun findAll() {
+        println("findAll")
+        userRepository.saveAll(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(4, savedUsers.size)
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun saveUser() {
+        println("saveUser")
+        val beforeUsers = userRepository.findAll()
+        println("beforeUsers: $beforeUsers")
+        assertEquals(0, beforeUsers.size)
+        userRepository.save(sampleUsers.first())
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(1, savedUsers.size)
+        assertEquals(sampleUsers.first(), savedUsers.first())
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun saveOrUpdateUser() {
+        println("saveOrUpdateUser")
+        val beforeUsers = userRepository.findAll()
+        println("beforeUsers: $beforeUsers")
+        assertEquals(0, beforeUsers.size)
+        userRepository.saveOrUpdate(sampleUsers.first())
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(1, savedUsers.size)
+        assertEquals(sampleUsers.first(), savedUsers.first())
+        userRepository.saveOrUpdate(sampleUsers.first().copy(nickname = "shiniseong-updated"))
+        val updatedUsers = userRepository.findAll()
+        println("updatedUsers: $updatedUsers")
+        assertEquals(1, updatedUsers.size)
+        assertEquals(sampleUsers.first().copy(nickname = "shiniseong-updated"), updatedUsers.first())
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun saveAllUsers() {
+        println("saveAllUsers")
+        val beforeUsers = userRepository.findAll()
+        println("beforeUsers: $beforeUsers")
+        assertEquals(0, beforeUsers.size)
+        userRepository.saveAll(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(4, savedUsers.size)
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun deleteById() {
+        println("deleteById")
+        val targetId = "uuid-2"
+        userRepository.saveAll(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(4, savedUsers.size)
+        userRepository.deleteById(targetId)
+        val deletedUser = userRepository.findById(targetId)
+        println("deletedUser: $deletedUser")
+        assertEquals(3, userRepository.findAll().size)
+        assertEquals(null, deletedUser)
+        userRepository.deleteAll()
+    }
+
+    @Test
+    fun deleteAllByIds() {
+        println("deleteAllByIds")
+        val targetIds = listOf("uuid-1", "uuid-3")
+        userRepository.saveAll(sampleUsers)
+        val savedUsers = userRepository.findAll()
+        println("savedUsers: $savedUsers")
+        assertEquals(4, savedUsers.size)
+        userRepository.deleteAllByIds(targetIds)
+        val deletedUsers = userRepository.findAllByIds(targetIds)
+        println("deletedUsers: $deletedUsers")
+        assertEquals(2, userRepository.findAll().size)
+        assertEquals(emptyList(), deletedUsers)
+        userRepository.deleteAll()
+    }
+
+    @Test
     fun deleteAllUsers() {
         println("clearAllUsers")
         userRepository.saveAll(sampleUsers)
@@ -64,6 +179,7 @@ class BaseRepositoryTest {
         val clearedUsers = userRepository.findAll()
         println("clearedUsers: $clearedUsers")
         assertEquals(0, clearedUsers.size)
+        userRepository.deleteAll()
     }
 
 
