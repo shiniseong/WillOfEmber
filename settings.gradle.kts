@@ -34,5 +34,5 @@ include(":server")
 include(":shared")
 include(":shared:adapter:inbound:controller")
 include(":shared:application")
-include(":shared:adapter:outbound:repository")
+include(":shared:adapter:outbound:repository:realm")
 
