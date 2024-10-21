@@ -17,7 +17,6 @@ class UserEntity : RealmObject, OutboundEntity<User> {
     var oauthId: String = ""
     var profileImage: String? = null
 
-
     override fun toDomain(): User = User(
         id = id,
         email = email,
