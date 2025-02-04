@@ -1,7 +1,7 @@
 package io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.test
 
 import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.entity.UserEntity
-import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.repository.UserRepositoryRealmImpl
+import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.repository.UserRepository
 import io.github.shiniseong.willofember.shared.application.domain.entity.User
 import io.github.shiniseong.willofember.shared.application.domain.enums.Gender
 import io.realm.kotlin.Realm
@@ -54,7 +54,7 @@ class BaseRepositoryTest {
             ),
         )
 
-        val userRepository = UserRepositoryRealmImpl(sampleRealm)
+        val userRepository = UserRepository(sampleRealm)
     }
 
     @Test
