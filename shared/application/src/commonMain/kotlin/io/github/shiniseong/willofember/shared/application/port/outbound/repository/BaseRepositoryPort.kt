@@ -1,6 +1,6 @@
 package io.github.shiniseong.willofember.shared.application.port.outbound.repository
 
-interface BaseRepository<T> {
+interface BaseRepositoryPort<T> {
     fun findById(id: String): T?
     fun findAll(): List<T>
     fun findAllByIds(ids: List<String>): List<T>

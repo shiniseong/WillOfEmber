@@ -1,7 +1,7 @@
 package io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.repository
 
 import io.github.shiniseong.willofember.shared.application.domain.entity.DomainEntity
-import io.github.shiniseong.willofember.shared.application.port.outbound.repository.BaseRepository
+import io.github.shiniseong.willofember.shared.application.port.outbound.repository.BaseRepositoryPort
 import io.github.shiniseong.willofember.shared.application.port.outbound.repository.entity.OutboundEntity
 import io.realm.kotlin.Realm
 import io.realm.kotlin.UpdatePolicy
@@ -9,10 +9,10 @@ import io.realm.kotlin.types.RealmObject
 import kotlin.reflect.KClass
 
 
-abstract class RealmBaseRepository<D : DomainEntity, P>(
+abstract class RealmBaseRepositoryAdapter<D : DomainEntity, P>(
     protected val realm: Realm,
     protected val persistenceClazz: KClass<P>
-) : BaseRepository<D> where P : RealmObject, P : OutboundEntity<D> {
+) : BaseRepositoryPort<D> where P : RealmObject, P : OutboundEntity<D> {
     override fun findById(id: String): D? =
         realm.query(persistenceClazz, "id == $0", id)
             .first()
