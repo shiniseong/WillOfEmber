@@ -21,7 +21,10 @@ kotlin {
     jvm()
     sourceSets {
         commonMain.dependencies {
+
             implementation(libs.kotlinx.coroutines)
+//            api(libs.internal.kotlin.util.libs)
+
         }
     }
 }

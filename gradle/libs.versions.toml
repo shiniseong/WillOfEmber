@@ -4,10 +4,10 @@ agp = "8.5.2"
 android-compileSdk = "34"
 android-minSdk = "24"
 android-targetSdk = "34"
-androidx-activityCompose = "1.9.2"
+androidx-activityCompose = "1.10.0"
 androidx-appcompat = "1.7.0"
-androidx-constraintlayout = "2.1.4"
-androidx-core-ktx = "1.13.1"
+androidx-constraintlayout = "2.2.0"
+androidx-core-ktx = "1.15.0"
 androidx-espresso-core = "3.6.1"
 androidx-lifecycle = "2.8.2"
 androidx-material = "1.12.0"
@@ -15,11 +15,10 @@ androidx-test-junit = "1.2.1"
 androidx-navigation = "2.8.0-alpha10"
 
 # === COMPOSE ===
-compose-plugin = "1.6.11"
-
+compose-multiplatform = "1.7.0"
 # === KOTLIN ===
 kotlin = "2.0.20"
-kotlinx-coroutines = "1.9.0"
+kotlinx-coroutines = "1.10.1"
 
 # === KTOR ===
 ktor = "2.3.12"
@@ -33,6 +32,9 @@ kotest = "5.9.1"
 
 # === REALM ===
 realm = "3.0.0"
+
+# === INTERNAL LIBS ===
+internal-kotlin-util-libs = "1.0.1.7-SNAPSHOT"
 
 [libraries]
 # === KOTLIN ===
@@ -70,15 +72,17 @@ realm-base = { module = "io.realm.kotlin:library-base", version.ref = "realm" }
 realm-sync = { module = "io.realm.kotlin:library-sync", version.ref = "realm" }
 realm-plugin = { module = "io.realm.kotlin:gradle-plugin", version.ref = "realm" }
 
+# === INTERNAL LIBS ===
+internal-kotlin-util-libs = { module = "com.github.shiniseong:kotlin-util-libs", version.ref = "internal-kotlin-util-libs" }
+
 [plugins]
 # === ANDROID ===
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 
 # === COMPOSE ===
-jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 # === KOTLIN ===
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -88,3 +92,4 @@ ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 
 # === REALM ===
 realm = { id = "io.realm.kotlin", version.ref = "realm" }
+
