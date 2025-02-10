@@ -16,3 +16,5 @@ captures
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+/shared/adapter/outbound/repository/realm/default.realm
+/shared/adapter/outbound/repository/realm/default.realm.lock
