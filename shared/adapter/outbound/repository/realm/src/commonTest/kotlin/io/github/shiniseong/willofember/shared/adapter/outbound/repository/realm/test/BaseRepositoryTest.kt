@@ -4,6 +4,7 @@ import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm
 import io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.repository.UserRepository
 import io.github.shiniseong.willofember.shared.application.domain.entity.User
 import io.github.shiniseong.willofember.shared.application.domain.enums.Gender
+import io.github.shiniseong.willofember.shared.application.domain.enums.OAuthProvider
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import kotlin.test.Test
@@ -21,7 +22,7 @@ class BaseRepositoryTest {
                 email = "shini12@example.com",
                 gender = Gender.MALE,
                 nickname = "shiniseong",
-                oauthProvider = "google",
+                oauthProvider = OAuthProvider.GOOGLE,
                 oauthId = "google-oauth-id-1",
                 profileImage = "https://example.com/profile-image-1",
             ),
@@ -30,7 +31,7 @@ class BaseRepositoryTest {
                 email = "tommy12@example.com",
                 gender = Gender.MALE,
                 nickname = "tommy",
-                oauthProvider = "google",
+                oauthProvider = OAuthProvider.GOOGLE,
                 oauthId = "google-oauth-id-2",
                 profileImage = "https://example.com/profile-image-2",
             ),
@@ -39,7 +40,7 @@ class BaseRepositoryTest {
                 email = "jason12@example.com",
                 gender = Gender.MALE,
                 nickname = "jason",
-                oauthProvider = "google",
+                oauthProvider = OAuthProvider.GOOGLE,
                 oauthId = "google-oauth-id-3",
                 profileImage = "https://example.com/profile-image-3",
             ),
@@ -48,7 +49,7 @@ class BaseRepositoryTest {
                 email = "anna12@example.com",
                 gender = Gender.MALE,
                 nickname = "anna",
-                oauthProvider = "google",
+                oauthProvider = OAuthProvider.GOOGLE,
                 oauthId = "google-oauth-id-4",
                 profileImage = "https://example.com/profile-image-4",
             ),
