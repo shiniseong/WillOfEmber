@@ -72,4 +72,4 @@ data class Flame(
      * 마지막 수정일시.
      */
     val updatedAt: LocalDateTime = LocalDateTime.now(),
-)
+) : DomainEntity
