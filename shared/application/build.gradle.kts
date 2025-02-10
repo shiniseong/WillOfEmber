@@ -23,6 +23,8 @@ kotlin {
         commonMain.dependencies {
 
             implementation(libs.kotlinx.coroutines)
+            implementation(libs.kotlinx.datetime)
+
 //            api(libs.internal.kotlin.util.libs)
 
         }
