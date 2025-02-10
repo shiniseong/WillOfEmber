@@ -1,10 +1,7 @@
 package io.github.shiniseong.willofember.shared.adapter.outbound.repository.realm.entity
 
 import io.github.shiniseong.willofember.shared.application.domain.entity.User
-import io.github.shiniseong.willofember.shared.application.domain.enums.Gender
-import io.github.shiniseong.willofember.shared.application.domain.enums.GenderValue
-import io.github.shiniseong.willofember.shared.application.domain.enums.UserGrade
-import io.github.shiniseong.willofember.shared.application.domain.enums.UserGradeValue
+import io.github.shiniseong.willofember.shared.application.domain.enums.*
 import io.github.shiniseong.willofember.shared.application.port.outbound.repository.entity.OutboundEntity
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
@@ -26,7 +23,7 @@ class UserEntity : RealmObject, OutboundEntity<User> {
         gender = Gender.valueOf(gender),
         grade = UserGrade.valueOf(grade),
         nickname = nickname,
-        oauthProvider = oauthProvider,
+        oauthProvider = OAuthProvider.valueOf(oauthProvider),
         oauthId = oauthId,
         profileImage = profileImage
     )

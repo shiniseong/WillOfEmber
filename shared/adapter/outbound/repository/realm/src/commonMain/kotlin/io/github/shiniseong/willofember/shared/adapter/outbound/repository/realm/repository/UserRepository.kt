@@ -15,7 +15,7 @@ class UserRepository(realm: Realm) :
         userEntity.id = id
         userEntity.email = email
         userEntity.gender = gender.name
-        userEntity.oauthProvider = oauthProvider
+        userEntity.oauthProvider = oauthProvider.name
         userEntity.oauthId = oauthId
         userEntity.nickname = nickname
         userEntity.profileImage = profileImage
