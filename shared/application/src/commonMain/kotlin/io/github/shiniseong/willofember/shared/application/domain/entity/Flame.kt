@@ -2,6 +2,7 @@ package io.github.shiniseong.willofember.shared.application.domain.entity
 
 import io.github.shiniseong.willofember.shared.application.domain.enums.FlameVisibility
 import io.github.shiniseong.willofember.shared.application.domain.util.now
+import io.github.shiniseong.willofember.shared.application.domain.vo.Color
 import kotlinx.datetime.LocalDateTime
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
@@ -27,7 +28,7 @@ data class Flame(
     /**
      * 색상.
      */
-    val color: String,
+    val color: Color,
     /**
      * 최소 요구 땔깜량
      */
