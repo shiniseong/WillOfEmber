@@ -1,4 +1,4 @@
-package io.github.shiniseong.willofflame.shared.application.domain.vo.id
+package io.github.shiniseong.willofember.shared.application.domain.vo.id
 
 import io.github.shiniseong.willofember.shared.application.domain.vo.ValueObject
 import kotlin.jvm.JvmInline

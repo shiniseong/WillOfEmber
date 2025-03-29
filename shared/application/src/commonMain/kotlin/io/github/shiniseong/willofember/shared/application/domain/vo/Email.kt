@@ -1,6 +1,5 @@
-package io.github.shiniseong.willofflame.shared.application.domain.vo
+package io.github.shiniseong.willofember.shared.application.domain.vo
 
-import io.github.shiniseong.willofember.shared.application.domain.vo.ValueObject
 import kotlin.jvm.JvmInline
 
 @JvmInline

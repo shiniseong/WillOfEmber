@@ -1,8 +1,8 @@
-package io.github.shiniseong.willofflame.shared.application.domain.entity
+package io.github.shiniseong.willofember.shared.application.domain.entity
 
+import io.github.shiniseong.willofember.shared.application.domain.enums.OAuthProvider
 import io.github.shiniseong.willofember.shared.application.domain.util.now
-import io.github.shiniseong.willofflame.shared.application.domain.enums.OAuthProvider
-import io.github.shiniseong.willofflame.shared.application.domain.vo.Email
+import io.github.shiniseong.willofember.shared.application.domain.vo.Email
 import kotlinx.datetime.LocalDateTime
 
 data class OAuthConnection(
@@ -14,7 +14,7 @@ data class OAuthConnection(
     val refreshToken: String,
     val isMain: Boolean = false,
     val isDeleted: Boolean = false,
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.Companion.now()
 ) {
     fun markAsMain(): OAuthConnection {
         return this.copy(isMain = true)
