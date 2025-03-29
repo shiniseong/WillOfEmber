@@ -47,6 +47,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 kotest = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 # === ANDROID ===
