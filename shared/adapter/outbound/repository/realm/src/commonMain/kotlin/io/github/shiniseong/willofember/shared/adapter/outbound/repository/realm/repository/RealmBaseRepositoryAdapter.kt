@@ -13,43 +13,43 @@ abstract class RealmBaseRepositoryAdapter<D : DomainEntity, P>(
     protected val realm: Realm,
     protected val persistenceClazz: KClass<P>
 ) : BaseRepositoryPort<D> where P : RealmObject, P : OutboundEntity<D> {
-    override fun findById(id: String): D? =
+    override suspend fun findById(id: String): D? =
         realm.query(persistenceClazz, "id == $0", id)
             .first()
             .find()
             ?.toDomain()
 
-    override fun findAll(): List<D> {
+    override suspend fun findAll(): List<D> {
         return realm.query(persistenceClazz).find().map { it.toDomain() }
     }
 
-    override fun findAllByIds(ids: List<String>): List<D> {
+    override suspend fun findAllByIds(ids: List<String>): List<D> {
         return realm.query(persistenceClazz, "id IN $0", ids)
             .find()
             .map { it.toDomain() }
     }
 
-    override fun save(entity: D): D {
+    override suspend fun save(entity: D): D {
         realm.writeBlocking { copyToRealm(entity.toPersistenceEntity()) }
         return entity
     }
 
-    override fun saveOrUpdate(entity: D): D {
+    override suspend fun saveOrUpdate(entity: D): D {
         realm.writeBlocking { copyToRealm(entity.toPersistenceEntity(), UpdatePolicy.ALL) }
         return entity
     }
 
-    override fun saveAll(entities: List<D>): List<D> {
+    override suspend fun saveAll(entities: List<D>): List<D> {
         realm.writeBlocking { entities.forEach { copyToRealm(it.toPersistenceEntity()) } }
         return entities
     }
 
-    override fun saveAllOrUpdate(entities: List<D>): List<D> {
+    override suspend fun saveAllOrUpdate(entities: List<D>): List<D> {
         realm.writeBlocking { entities.forEach { copyToRealm(it.toPersistenceEntity(), UpdatePolicy.ALL) } }
         return entities
     }
 
-    override fun deleteById(id: String) {
+    override suspend fun deleteById(id: String) {
         realm.writeBlocking {
             query(persistenceClazz, "id == $0", id)
                 .first()
@@ -58,7 +58,7 @@ abstract class RealmBaseRepositoryAdapter<D : DomainEntity, P>(
         }
     }
 
-    override fun deleteAllByIds(ids: List<String>) {
+    override suspend fun deleteAllByIds(ids: List<String>) {
         realm.writeBlocking {
             ids.forEach { id ->
                 query(persistenceClazz, "id == $0", id)
@@ -69,7 +69,7 @@ abstract class RealmBaseRepositoryAdapter<D : DomainEntity, P>(
         }
     }
 
-    override fun deleteAll() {
+    override suspend fun deleteAll() {
         realm.writeBlocking {
             val beDeletedEntities = query(persistenceClazz).find()
             delete(beDeletedEntities)

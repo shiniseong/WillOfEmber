@@ -7,6 +7,7 @@ import io.github.shiniseong.willofember.shared.application.domain.enums.Gender
 import io.github.shiniseong.willofember.shared.application.domain.enums.OAuthProvider
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -59,7 +60,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun findById() {
+    fun findById() = runTest {
         println("findById")
         val targetId = "uuid-2"
         userRepository.saveAll(sampleUsers)
@@ -73,7 +74,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun findAllByIds() {
+    fun findAllByIds() = runTest {
         println("findAllByIds")
         val targetIds = listOf("uuid-1", "uuid-3")
         userRepository.saveAll(sampleUsers)
@@ -86,7 +87,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun findAll() {
+    fun findAll() = runTest {
         println("findAll")
         userRepository.saveAll(sampleUsers)
         val savedUsers = userRepository.findAll()
@@ -96,7 +97,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun saveUser() {
+    fun saveUser() = runTest {
         println("saveUser")
         val beforeUsers = userRepository.findAll()
         println("beforeUsers: $beforeUsers")
@@ -110,7 +111,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun saveOrUpdateUser() {
+    fun saveOrUpdateUser() = runTest {
         println("saveOrUpdateUser")
         val beforeUsers = userRepository.findAll()
         println("beforeUsers: $beforeUsers")
@@ -129,7 +130,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun saveAllUsers() {
+    fun saveAllUsers() = runTest {
         println("saveAllUsers")
         val beforeUsers = userRepository.findAll()
         println("beforeUsers: $beforeUsers")
@@ -142,7 +143,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun saveAllOrUpdate() {
+    fun saveAllOrUpdate() = runTest {
         println("saveAllOrUpdate")
         val beforeUsers = userRepository.findAll()
         println("beforeUsers: $beforeUsers")
@@ -160,7 +161,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun deleteById() {
+    fun deleteById() = runTest {
         println("deleteById")
         val targetId = "uuid-2"
         userRepository.saveAll(sampleUsers)
@@ -176,7 +177,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun deleteAllByIds() {
+    fun deleteAllByIds() = runTest {
         println("deleteAllByIds")
         val targetIds = listOf("uuid-1", "uuid-3")
         userRepository.saveAll(sampleUsers)
@@ -192,7 +193,7 @@ class BaseRepositoryTest {
     }
 
     @Test
-    fun deleteAllUsers() {
+    fun deleteAllUsers() = runTest {
         println("clearAllUsers")
         userRepository.saveAll(sampleUsers)
         val savedUsers = userRepository.findAll()
